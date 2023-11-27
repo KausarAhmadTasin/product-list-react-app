@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-key */
 import { useEffect, useState } from "react";
 import "./App.css";
-import { getproductsFromLocalStorage } from "./utils/utils";
 import Form from "./components/FormData/FormData";
 import ProductTable from "./components/ProductTable/ProductTable";
 
 function App() {
-  const [products, setProducts] = useState(getproductsFromLocalStorage());
+  const [products, setProducts] = useState(JSON.parse(localStorage.getItem("products")) || []);
+// console.log(products)
 
   useEffect(() => {
     localStorage.setItem("products", JSON.stringify(products));
